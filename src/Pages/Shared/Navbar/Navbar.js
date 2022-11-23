@@ -30,7 +30,7 @@ const Navbar = () => {
        {menuItems}
       </ul>
     </div>
-    <Link className="btn btn-ghost normal-case text-xl">
+    <Link className="btn btn-ghost normal-case text-xl hidden md:flex">
         <img className='w-12' src={logo} alt="" />
         <span className='ml-1'> AM</span></Link>
   </div>
