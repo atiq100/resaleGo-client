@@ -37,7 +37,7 @@ export const Header = () => {
                 Sell, Your Bike For Countless Benifits
               </h2>
               <p className="text-base text-gray-700 md:text-lg">
-                It is a resell Market.Here you can sell your used bike and also buy from this website.
+                It is a resale Market.Here you can sell your used bike and also buy from this website.
               </p>
             </div>
             <div className="flex items-center sm:justify-center">

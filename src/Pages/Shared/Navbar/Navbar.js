@@ -32,7 +32,7 @@ const Navbar = () => {
     </div>
     <Link className="btn btn-ghost normal-case text-xl hidden md:flex">
         <img className='w-12' src={logo} alt="" />
-        <span className='ml-1'> AM</span></Link>
+        <span className='ml-1'> ResaleGo</span></Link>
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal p-0">
