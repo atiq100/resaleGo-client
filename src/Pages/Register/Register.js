@@ -79,7 +79,7 @@ const Register = () => {
   }
 
   return (
-    <div className="flex flex-col items-center justify-between xl:flex-row">
+    <div className="flex flex-col items-center justify-between xl:flex-row mt-16">
         <div className="w-1/2">
             <img className="w-full object-contain" src={image} alt="" />
         </div>

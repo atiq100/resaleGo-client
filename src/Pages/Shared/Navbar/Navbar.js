@@ -1,8 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { FaPalette, FaSignInAlt, FaSignOutAlt, FaUserAlt } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import logo from '../../../assets/logo/logo.png'
+import { AuthContext } from '../../../context/AuthProvider/AuthProvider';
 
 const Navbar = () => {
+  const {user,logOut} = useContext(AuthContext)
+  const handleLogout = ()=>{
+        logOut()
+        .then(()=>{})
+        .catch(err=>console.log(err))
+  }
     const menuItems = <>
     <li><Link to='/'>Home</Link></li>
     <li><Link to='/sell'>Sell</Link></li>
@@ -40,11 +48,32 @@ const Navbar = () => {
     </ul>
   </div>
   <div className="navbar-end">
+  <div className="dropdown dropdown-hover dropdown-left">
+  <label tabIndex={1} className="">
   <div className="avatar">
   <div className="w-12 rounded-full">
-    <img src="https://placeimg.com/192/192/people" alt='' />
+    {
+      user?.uid && user?.photoURL ?
+      <img src={user?.photoURL} alt='' />
+      :
+      <FaUserAlt className='m-auto mt-3 text-xl'></FaUserAlt>
+    }
   </div>
 </div>
+  </label>
+  <ul tabIndex={1} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-36">
+    {
+      user?.uid ?
+      <>
+      <li><Link><FaPalette></FaPalette> Dashboard</Link></li>
+    <li><button onClick={handleLogout}><FaSignOutAlt></FaSignOutAlt> Logout</button></li>
+      </>
+      :
+      <li><Link to='/login'><FaSignInAlt></FaSignInAlt> Login</Link></li>
+    }
+  </ul>
+</div>
+  
   </div>
 </div>
     );
