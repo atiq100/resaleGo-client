@@ -40,8 +40,8 @@ const Register = () => {
         };
         updateUserProfile(userInfo)
           .then(() => {
-            // saveUser(data.name,data.email)
-            console.log(data.name, data.email, data.type);
+             saveUser(data.name,data.email,data.userType)
+            //console.log(data.name, data.email, data.type);
           })
           .catch((err) => console.log(err));
       })
@@ -62,21 +62,21 @@ const Register = () => {
     .catch(error => console.log(error))
 
 }
-  // const saveUser=(name,email)=>{
-  //   const user = {name,email}
-  //   fetch('http://localhost:5000/users',{
-  //     method:'POST',
-  //     headers:{
-  //       'content-type':'application/json'
-  //     },
-  //     body:JSON.stringify(user)
-  //   })
-  //   .then(res=> res.json())
-  //   .then(data=>{
-  //     console.log(data);
-  //     setCreatedUserEmail(email)
-  //   })
-  // }
+  const saveUser=(name,email,userType)=>{
+    const user = {name,email,userType}
+    fetch('http://localhost:5000/users',{
+      method:'POST',
+      headers:{
+        'content-type':'application/json'
+      },
+      body:JSON.stringify(user)
+    })
+    .then(res=> res.json())
+    .then(data=>{
+      console.log(data);
+      //setCreatedUserEmail(email)
+    })
+  }
 
   return (
     <div className="flex flex-col items-center justify-between xl:flex-row">
@@ -116,11 +116,11 @@ const Register = () => {
             </div>
 
             <div className="space-y-2">
-              <label htmlFor="type" className="block text-sm">
+              <label htmlFor="userType" className="block text-sm">
                 Select user type
               </label>
               <select
-                {...register("type")}
+                {...register("userType")}
                 className="select w-full px-3 py-2 border rounded-md dark:border-gray-700 dark:text-gray-900"
               >
                 <option value="Buyer">Buyer</option>

@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import toast from "react-hot-toast";
+
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthProvider/AuthProvider";
@@ -53,21 +53,7 @@ const Login = () => {
     .catch(error => console.log(error))
 
 }
-  // const saveUser=(name,email)=>{
-  //   const user = {name,email}
-  //   fetch('http://localhost:5000/users',{
-  //     method:'POST',
-  //     headers:{
-  //       'content-type':'application/json'
-  //     },
-  //     body:JSON.stringify(user)
-  //   })
-  //   .then(res=> res.json())
-  //   .then(data=>{
-  //     console.log(data);
-  //     setCreatedUserEmail(email)
-  //   })
-  // }
+
 
   return (
     <div className="flex flex-col items-center justify-between xl:flex-row">
