@@ -1,18 +1,26 @@
 import React, { useContext, useState } from "react";
 import toast from "react-hot-toast";
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthProvider/AuthProvider";
 import image from '../../assets/images/login.png'
+import { GoogleAuthProvider } from "firebase/auth";
 //import useToken from '../../hooks/useToken';
 
 const Register = () => {
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    const googleProvider = new GoogleAuthProvider()
+    
+
+    const from = location.state?.from?.pathname || '/';
   const {
     register,
     formState: { errors },
     handleSubmit,
   } = useForm();
-  const { createUser, updateUserProfile } = useContext(AuthContext);
+  const { createUser,providerLogin, updateUserProfile } = useContext(AuthContext);
   const [signUpError, setSignUpError] = useState("");
   //const [createdUserEmail,setCreatedUserEmail] = useState('')
   //const [token] = useToken(createdUserEmail)
@@ -42,6 +50,18 @@ const Register = () => {
         setSignUpError(err.message);
       });
   };
+  const handleGoogleSignIn=()=>{
+    providerLogin(googleProvider)
+    .then(result =>{
+        const user = result.user
+       
+       navigate(from,{replace: true})
+        
+       
+    })
+    .catch(error => console.log(error))
+
+}
   // const saveUser=(name,email)=>{
   //   const user = {name,email}
   //   fetch('http://localhost:5000/users',{
@@ -141,7 +161,7 @@ const Register = () => {
             <Link
               to="/login"
               rel="noopener noreferrer"
-              className=" text-secondary focus:underline hover:underline"
+              className=" text-primary focus:underline hover:underline"
             >
               Login
             </Link>
@@ -154,6 +174,7 @@ const Register = () => {
         </div>
         <div className="my-6 space-y-4">
           <button
+           onClick={handleGoogleSignIn}
             aria-label="Login with Google"
             type="button"
             className="flex items-center justify-center w-full p-4 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 dark:border-gray-400 focus:ring-violet-400"
