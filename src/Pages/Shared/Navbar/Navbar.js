@@ -65,7 +65,7 @@ const Navbar = () => {
     {
       user?.uid ?
       <>
-      <li><Link><FaPalette></FaPalette> Dashboard</Link></li>
+      <li><Link to='/dashboard'><FaPalette></FaPalette> Dashboard</Link></li>
     <li><button onClick={handleLogout}><FaSignOutAlt></FaSignOutAlt> Logout</button></li>
       </>
       :

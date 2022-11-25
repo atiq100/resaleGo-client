@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link} from 'react-router-dom';
 
 const BrandName = () => {
     const [categories, setCategories] = useState([]);
+    
 
     useEffect( () =>{
         fetch('http://localhost:5000/bike-categories')
@@ -14,10 +15,12 @@ const BrandName = () => {
         <div>
             <h3 className='text-3xl text-center font-bold'>Filter By Brand</h3>
             <p className='text-center text-lg mb-4'>Available Brands:({categories.length})</p>
-            <div className='flex flex-row justify-center gap-4 items-center  bg-base-100'>
+            <div className='flex flex-row-reverse lg:flex-row justify-center gap-4 items-center  bg-base-100'>
                 {
-                    categories.map(category => <p className='card w-36 p-6 mb-6 text-xl font-semibold shadow-md bg-base-100 text-center' key={category._id}>
-                        <Link to={`/category/${category._id}`}>{category.name}</Link>
+                    categories.map(category => <p className='card w-full lg:w-36 p-6 mb-6 text-xl font-semibold shadow-md bg-base-100 text-center'
+                     key={category._id}
+                     >
+                        <Link to={`/all-bikes/${category._id}`}>{category.name}</Link>
                         
                     </p>)
                 }
