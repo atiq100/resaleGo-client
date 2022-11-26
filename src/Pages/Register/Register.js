@@ -40,7 +40,7 @@ const Register = () => {
         };
         updateUserProfile(userInfo)
           .then(() => {
-             saveUser(data.name,data.email,data.userType)
+             saveUser(data.name,data.email,data.userType,data.isVarified)
             //console.log(data.name, data.email, data.type);
           })
           .catch((err) => console.log(err));
@@ -62,8 +62,8 @@ const Register = () => {
     .catch(error => console.log(error))
 
 }
-  const saveUser=(name,email,userType)=>{
-    const user = {name,email,userType}
+  const saveUser=(name,email,userType,isVarified)=>{
+    const user = {name,email,userType,isVarified:'Not verify'}
     fetch('http://localhost:5000/users',{
       method:'POST',
       headers:{
