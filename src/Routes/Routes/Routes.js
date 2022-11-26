@@ -60,7 +60,7 @@ export const router = createBrowserRouter([
             {
                 path:'/dashboard/addproduct',
                 element:<SellerRoute><AddSalePost></AddSalePost></SellerRoute>,
-                loader:()=>fetch('http://localhost:5000/all-bikes')
+                loader:()=>fetch('http://localhost:5000/bike-categories')
             }
 
         ]

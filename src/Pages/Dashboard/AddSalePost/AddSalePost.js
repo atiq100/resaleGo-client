@@ -7,7 +7,7 @@ const AddSalePost = () => {
     const {user} = useContext(AuthContext)
     const [catId,setCatId]=useState('')
   const categories = useLoaderData();
-  
+  console.log(categories);
 
   const onChangeHandler = (e) => {
     const index = e.target.selectedIndex;
@@ -18,6 +18,7 @@ const AddSalePost = () => {
   
   const handleAddProduct=(event)=>{
     const name = user?.displayName;
+    const email = user?.email;
     const form = event.target;
     const productName = form.productname.value;
     const originalPrice = form.originalprice.value;
@@ -34,6 +35,7 @@ const product={
     lastModified: Date(),
     category_id:catId,
     seller_name: name,
+    email,
     productName,
     originalPrice,
     resalePrice,
@@ -197,7 +199,7 @@ fetch('http://localhost:5000/all-bikes',{
                 className="select select-bordered w-full p-2 rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:border-gray-700 dark:text-gray-900"
               >
                 <option disabled selected >select category carefully</option>
-                {categories?.map((category) => (
+                 { categories && categories?.map((category) => (
                   <option id={category._id} value={category.name} key={category._id}>
                     {category.name}
                   </option>
