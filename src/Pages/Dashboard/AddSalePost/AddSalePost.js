@@ -197,7 +197,7 @@ fetch('http://localhost:5000/all-bikes',{
                 className="select select-bordered w-full p-2 rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:border-gray-700 dark:text-gray-900"
               >
                 <option disabled selected >select category carefully</option>
-                {categories.map((category) => (
+                {categories?.map((category) => (
                   <option id={category._id} value={category.name} key={category._id}>
                     {category.name}
                   </option>
