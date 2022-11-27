@@ -21,7 +21,7 @@ const ManageOrders = () => {
         .then(data=>{
             if(data.deletedCount > 0){
                 refetch()
-                toast.success(` ${booking.productName} deleted successfully`)
+                toast.success(` ${booking.product} deleted successfully`)
             }
             
         })
@@ -91,7 +91,7 @@ const ManageOrders = () => {
       {
         deletingOrder && <ConfirmationModal 
         title={`Are you sure you want to delete?`}
-        message={`If you delete ${deletingOrder.name}. It can not be recover`}
+        message={`If you delete ${deletingOrder.product}. It can not be recover`}
         successAction={handleDelete}
         closeModal={closeModal}
         modalData = {deletingOrder}

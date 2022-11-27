@@ -13,8 +13,8 @@ const ConfirmationModal = ({title,message,closeModal, successAction,successActio
     <h3 className="font-bold text-lg">{title}</h3>
     <p className="py-4">{message}</p>
     <div className="modal-action">
-      <label onClick={ ()=> successAction(modalData)} htmlFor="confirmation-modal" className="btn">{successActionbtn}</label>
-      <button onClick={closeModal}  className="btn btn-outline">Cancel</button>
+      <label onClick={ ()=> successAction(modalData)} htmlFor="confirmation-modal" className="btn btn-secondary">{successActionbtn}</label>
+      <button onClick={closeModal}  className="btn btn-secondary btn-outline">Cancel</button>
     </div>
   </div>
 </div>

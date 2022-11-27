@@ -39,7 +39,7 @@ export const router = createBrowserRouter([
             },
             {
                 path:'/all-bikes/:id',
-                element:<Sell></Sell>,
+                element:<PrivateRoute><Sell></Sell></PrivateRoute>,
                 loader:({params})=>fetch(`http://localhost:5000/all-bikes/${params.id}`)
             },
            

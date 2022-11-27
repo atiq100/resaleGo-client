@@ -13,8 +13,8 @@ const BrandName = () => {
 
     return (
         <div>
-            <h3 className='text-3xl text-center font-bold'>Filter By Brand</h3>
-            <p className='text-center text-lg mb-4'>Available Brands:({categories.length})</p>
+            <h3 className='text-3xl text-center my-4 font-bold'>Filter By Brand</h3>
+            
             <div className='flex flex-row-reverse lg:flex-row justify-center gap-4 items-center  bg-base-100'>
                 {
                     categories.map(category => <p className='card w-full lg:w-36 p-6 mb-6 text-xl font-semibold shadow-md bg-base-100 text-center'

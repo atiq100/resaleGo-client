@@ -2,8 +2,32 @@ import { useQuery } from '@tanstack/react-query';
 import React, { useState } from 'react';
 
 import toast from 'react-hot-toast';
+import ConfirmationModal from '../../Shared/ConfirmationModal/ConfirmationModal';
 
 const AllUsers = () => {
+
+
+    const [deletingUser,setDeletingUser] = useState(null)
+    const handleDelete =(user)=>{
+        fetch(`http://localhost:5000/users/${user._id}`,{
+            method:'DELETE',
+            // headers:{
+            //     authorization: `bearer ${localStorage.getItem('accessToken')}`
+            // }
+        })
+        .then(res=>res.json())
+        .then(data=>{
+            if(data.deletedCount > 0){
+                refetch()
+                toast.success(` ${user.name} deleted successfully`)
+            }
+            
+        })
+
+    }
+    const closeModal = () =>{
+        setDeletingUser(null)
+    }
     
     const {data:users=[],refetch} = useQuery({
         queryKey:['users'],
@@ -77,7 +101,7 @@ const AllUsers = () => {
             <td className={user.isVarified ==='varified' ? 'text-green-500' : 'text-red-500'}>{user.isVarified}</td>
             <td>{user?.isVarified !== 'varified' && <button onClick={ ()=> handleMakeVerify(user._id)} className='btn btn-xs'>Make verified</button>}</td>
             <td>{user?.userType !== 'admin' && <button onClick={ ()=> handleMakeAdmin(user._id)} className='btn btn-xs btn-secondary text-white'>Make Admin</button>}</td>
-            <td><button className=' btn btn-xs btn-error'>Delete</button></td>
+            <td><label onClick={ ()=> setDeletingUser(user)} htmlFor="confirmation-modal" className="btn btn-xs btn-error">Delete</label></td>
           </tr>)
       }
      
@@ -85,6 +109,16 @@ const AllUsers = () => {
     </tbody>
   </table>
 </div>
+{
+        deletingUser && <ConfirmationModal 
+        title={`Are you sure you want to delete?`}
+        message={`If you delete ${deletingUser.name}. It can not be undone`}
+        successAction={handleDelete}
+        closeModal={closeModal}
+        modalData = {deletingUser}
+        successActionbtn="Delete"
+        ></ConfirmationModal>
+      }
         </div>
     );
 };
