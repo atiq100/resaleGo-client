@@ -1,12 +1,15 @@
-import React, {  useEffect, useState } from "react";
+import React, {  useContext, useEffect, useState } from "react";
 
 import axios from 'axios';
 import { FaCheckCircle } from "react-icons/fa";
+import { AuthContext } from "../../context/AuthProvider/AuthProvider";
+import toast from "react-hot-toast";
 
 
 const SellCard = ({ post }) => {
- 
-  
+
+ const [modal,setModal]=useState(null)
+  const {user}=useContext(AuthContext)
   const [data,setStatus] = useState([])
   
   const url = 'http://localhost:5000/users'
@@ -21,7 +24,7 @@ const SellCard = ({ post }) => {
        getUsers();  
 
  },[])
- console.log(data);
+ 
  
   const {
     productName,
@@ -35,21 +38,74 @@ const SellCard = ({ post }) => {
     originalPrice,
     resalePrice,
     yearsOfUse,
+    photoURL
     
   } = post;
+  const handleBooking = event =>{
+    event.preventDefault();
+    const form = event.target;
+    const name = form.name.value;
+    const email = form.email.value;
+    const product = form.product.value;
+    const phone = form.phone.value;
+    const price = form.price.value;
+    const location = form.location.value;
+    
+
+
+const booking={
+  
+  Buyer: name,
+  email,
+  phone,
+  product,
+  price,
+  location
+}
+
+
+
+fetch('http://localhost:5000/bookings',{
+  method:'POST',
+  headers:{
+    'content-type':'application/json'
+  },
+  body:JSON.stringify(booking)
+})
+.then(res=>res.json())
+.then(data=>{
+  console.log(data);
+  
+  if(data.acknowledged){
+   // setModal(null) //modal off
+    toast.success('Booking Confirmed')
+    form.reset()
+    
+  }
+  else{
+    toast.error(data.message)
+  }
+})
+
+// const closeModal = () =>{
+//   setModal(null)
+// }
+//console.log(booking);
+
+}
   
   return (
     <div>
       <div className="card w-full lg:w-96 bg-base-100 shadow-xl">
         <figure>
-          <img src="https://placeimg.com/400/225/arch" alt="Shoes" />
+          <img src={photoURL} alt="bike" />
         </figure>
         <div className="card-body">
           <h2 className="card-title">Brand: {productName}</h2>
           <div className="text-lg font-semibold">
           <p className="flex">
               Id type:{" "}
-              <span className="text-secondary text-md font-normal mt-2 ml-1">
+              <span className="text-blue-500 text-md font-normal mt-2 ml-1">
                 {data.map(user=><span key={user._id}>{user?.email === email && user?.isVarified=== 'varified' ? <FaCheckCircle></FaCheckCircle> : ''}</span>)}
               </span>
             </p>
@@ -109,8 +165,67 @@ const SellCard = ({ post }) => {
             </p>
           </div>
           <div className="card-actions justify-end">
-            <button className="btn btn-primary">Buy Now</button>
+          <label htmlFor="booking-modal" className="btn btn-primary">Buy Now</label>
           </div>
+      
+<input type="checkbox" id="booking-modal" className="modal-toggle" />
+<div className="modal">
+  <div className="modal-box relative">
+    <label htmlFor="booking-modal" className="btn btn-secondary btn-sm btn-circle absolute right-2 top-2">✕</label>
+    <h3 className="text-lg font-bold text-center">Booking For {productName}</h3>
+    <form onSubmit={handleBooking} className="py-4 grid grid-cols-1 gap-3 mt-6">
+      <input  name="name"
+              type="text"
+              defaultValue={user?.displayName}
+              disabled
+              placeholder="Your name"
+              className="input input-bordered w-full "
+               />
+                <input  name="email"
+              type="text"
+              defaultValue={user?.email}
+              disabled
+              placeholder="Your email"
+              className="input input-bordered w-full "
+               />
+                <input  name="product"
+              type="text"
+              defaultValue={productName}
+              disabled
+              placeholder="Product Name"
+              className="input input-bordered w-full "
+               />
+                <input  name="price"
+              type="text"
+              defaultValue={originalPrice}
+              disabled
+              placeholder="Product price"
+              className="input input-bordered w-full "
+               />
+                <input
+            name="phone"
+              type="number"
+              placeholder="Your Phone Number"
+              className="input input-bordered w-full "
+            />
+             <input
+            name="location"
+              type="text"
+              placeholder="Meeting Location"
+              className="input input-bordered w-full "
+            />
+            <br />
+            <input
+            
+              type="submit"
+              value="Submit"
+              className="btn btn-secondary text-white text-lg w-full "
+            />
+
+
+    </form>
+  </div>
+</div>
         </div>
       </div>
     </div>

@@ -29,6 +29,7 @@ const AddSalePost = () => {
     const yearsOfUse = form.uses.value;
     const condition = form.condition.value;
     const category = form.category.value;
+    const photoURL = form.image.value;
     
 
 const product={
@@ -44,7 +45,8 @@ const product={
     location,
     yearsOfUse,
     condition,
-    category
+    category,
+    photoURL
 }
 
 fetch('http://localhost:5000/all-bikes',{
@@ -212,8 +214,8 @@ fetch('http://localhost:5000/all-bikes',{
               </label>
               <input
                 name="image"
-                type="file"
-                placeholder=" product photo"
+                type="text"
+                placeholder=" Product photo URL"
                 className="w-full p-2 rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:border-gray-700 dark:text-gray-900"
               />
             </div>
