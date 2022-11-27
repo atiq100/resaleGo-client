@@ -5,12 +5,14 @@ import Blog from "../../Pages/Blog/Blog";
 import AddSalePost from "../../Pages/Dashboard/AddSalePost/AddSalePost";
 import AllUsers from "../../Pages/Dashboard/AllUsers/AllUsers";
 import Dashboard from "../../Pages/Dashboard/Dashboard/Dashboard";
+import ManageOrders from "../../Pages/Dashboard/ManageOrders/ManageOrders";
 import BrandName from "../../Pages/Home/BrandName/BrandName";
 import Home from "../../Pages/Home/Home/Home";
 import Login from "../../Pages/Login/Login";
 import Register from "../../Pages/Register/Register";
 import Sell from "../../Pages/Sell/Sell"
 import AdminRoute from "../AdminRoute/AdminRoute";
+import BuyerRoute from "../BuyerRoute/BuyerRoute";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import SellerRoute from "../SellerRoute/SellerRoute";
 
@@ -52,6 +54,10 @@ export const router = createBrowserRouter([
             {
                 path:'/dashboard',
                 element:<Dashboard></Dashboard>
+            },
+            {
+                path:'/dashboard/manageorders',
+                element:<BuyerRoute><ManageOrders></ManageOrders></BuyerRoute>
             },
             {
                 path:'/dashboard/users',

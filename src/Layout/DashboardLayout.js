@@ -1,14 +1,16 @@
 import React, { useContext } from "react";
-import { FaPalette, FaPlus, FaUser } from "react-icons/fa";
+import { FaBorderAll, FaPalette, FaPlus, FaUser } from "react-icons/fa";
 import { Link, Outlet } from "react-router-dom";
 import { AuthContext } from "../context/AuthProvider/AuthProvider";
 import useAdmin from "../hooks/useAdmin";
+import useBuyer from "../hooks/useBuyer";
 import useSeller from "../hooks/useSeller";
 import Navbar from "../Pages/Shared/Navbar/Navbar";
 const DashboardLayout = () => {
   const {user}= useContext(AuthContext)
   const [isAdmin] = useAdmin(user?.email)
   const [isSeller] = useSeller(user?.email)
+  const [isBuyer] = useBuyer(user?.email)
   return (
     <div>
       <Navbar></Navbar>
@@ -26,6 +28,12 @@ const DashboardLayout = () => {
             </li>
             <li>
               {
+                isBuyer &&
+                <Link to='/dashboard/manageorders'><FaBorderAll></FaBorderAll>  My Order</Link>
+              }
+            </li>
+            <li>
+              {
                 isAdmin && 
                 
                   <Link to='/dashboard/users'><FaUser></FaUser> All users</Link>
@@ -38,7 +46,7 @@ const DashboardLayout = () => {
                     isSeller &&
                    <>
                      <Link to='/dashboard/addproduct'><FaPlus></FaPlus> Add Product</Link>
-                     <Link to='/dashboard/manageProduct'>Manage Product</Link>
+                     <Link to='/dashboard/manageproduct'>Manage Product</Link>
                    </>
                 }
             </li>
