@@ -66,7 +66,7 @@ const AllUsers = () => {
         .then(data=>{
             if(data.modifiedCount>0){
               
-                toast.success('Make admin successfull')
+                toast.success('Make verify successfull')
                 refetch()
             }
            

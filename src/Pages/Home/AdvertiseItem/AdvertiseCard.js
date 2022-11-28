@@ -6,6 +6,7 @@ import { FaCheckCircle } from "react-icons/fa";
 import toast from "react-hot-toast";
 import useAdvertise from "../../../hooks/useAdvertise";
 import { AuthContext } from "../../../context/AuthProvider/AuthProvider";
+import Loader from "../../Shared/Loader/Loader";
 
 
 const AdvertiseCard = ({ post }) => {
@@ -13,6 +14,7 @@ const AdvertiseCard = ({ post }) => {
  const [modal,setModal]=useState(null)
   const {user}=useContext(AuthContext)
   const [data,setStatus] = useState([])
+  const [loading,setLoading] = useState(true)
   
   const url = 'http://localhost:5000/users'
  useEffect(()=>{
@@ -22,7 +24,7 @@ const AdvertiseCard = ({ post }) => {
     
         .then((res) => res.data)
         .then((data) => setStatus(data));
-        
+       
        getUsers();  
 
  },[])
@@ -98,20 +100,19 @@ fetch('http://localhost:5000/bookings',{
   
   return (
     <>
+    
+    
         {isAdvertise &&
+        
       <div className="card w-full lg:w-96 bg-base-100 shadow-xl">
+        
         <figure>
           <img src={photoURL} alt="bike" />
         </figure>
         <div className="card-body">
           <h2 className="card-title">Brand: {productName}</h2>
           <div className="text-lg font-semibold">
-          <p className="flex">
-              Id type:{" "}
-              <span className="text-blue-500 text-md font-normal mt-2 ml-1">
-                {data.map(user=><span key={user._id}>{user?.email === email && user?.isVarified=== 'varified' ? <FaCheckCircle></FaCheckCircle> : ''}</span>)}
-              </span>
-            </p>
+         
             <p>
               Original Price:{" "}
               <span className="text-secondary text-md font-normal">
@@ -148,10 +149,13 @@ fetch('http://localhost:5000/bookings',{
                 {location}
               </span>
             </p>
-            <p>
+            <p className="flex">
               Seller Name:{" "}
-              <span className="text-secondary text-md font-normal">
+              <span className="text-secondary text-md font-normal flex">
                 {seller_name}
+                <span className="text-blue-500 text-md font-normal mt-2 ml-1">
+                {data.map(user=><span key={user._id}>{user?.email === email && user?.isVarified=== 'varified' ? <FaCheckCircle></FaCheckCircle> : ''}</span>)}
+              </span>
               </span>
             </p>
             <p>
@@ -233,7 +237,9 @@ fetch('http://localhost:5000/bookings',{
         </div>
       </div>
 }
-    </>
+</>
+
+    
   );
 };
 

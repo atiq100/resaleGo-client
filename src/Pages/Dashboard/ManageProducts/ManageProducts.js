@@ -21,7 +21,7 @@ const ManageProducts = () => {
         .then(data=>{
             if(data.deletedCount > 0){
                 refetch()
-                toast.success(` ${item.product} deleted successfully`)
+                toast.success(` ${item.productName} deleted successfully`)
             }
             
         })
@@ -34,7 +34,7 @@ const ManageProducts = () => {
     queryKey: ["items",user?.email],
     queryFn: async () => {
       try {
-        const res = await fetch(`http://localhost:5000/all-bikes?email=${user?.email}`, {
+        const res = await fetch(`http://localhost:5000/all-bikes/manage?email=${user?.email}`, {
         //   headers: {
         //     authorization: `bearer ${localStorage.getItem("accessToken")}`,
         //   },
@@ -47,6 +47,23 @@ const ManageProducts = () => {
   if(isLoading){
     return <Loader></Loader>
   }
+  const handleAdvertisement = id =>{
+    fetch(`http://localhost:5000/all-bikes/advertise/${id}`,{
+        method:'PUT',
+        // headers:{
+        //     authorization:`bearer ${localStorage.getItem('accessToken')}`
+        // }
+    })
+    .then(res=>res.json())
+    .then(data=>{
+        if(data.modifiedCount>0){
+          
+            toast.success('Product advertise  successfull ')
+            refetch()
+        }
+       
+    })
+}
   return (
     <div>
       <h2 className="text-3xl mb-4">My Products:</h2>
@@ -62,7 +79,9 @@ const ManageProducts = () => {
               <th>Email</th>
               <th>Product Name</th>
               <th>Price</th>
-              <th>Payment</th>
+              <th>Advertisment status</th>
+              <th>Make Advertise</th>
+              
               <th>Delete</th>
             </tr>
                        
@@ -71,7 +90,7 @@ const ManageProducts = () => {
            }
           </thead>
           <tbody>
-            {items && items.map((item, i) => (
+            {items && items?.map((item, i) => (
               <tr key={item._id}>
                 <th>{i + 1}</th>
                 <th><div className="avatar">
@@ -82,7 +101,9 @@ const ManageProducts = () => {
                 <td>{item.email}</td>
                 <td>{item.productName}</td>
                 <td>{item.resalePrice}</td>
-                <td><Link className="btn btn-secondary btn-xs">Pay</Link></td>
+                
+                <td className={item.advertise ==='advertisement' ? 'text-green-500' : 'text-red-500'}>{item.advertise}</td>
+            <td>{item?.advertise !== 'advertisement' && <button onClick={ ()=> handleAdvertisement(item._id)} className='btn btn-xs'>Add advertise</button>}</td>
                 <td>
                 <label onClick={ ()=> setDeletingOrder(item)} htmlFor="confirmation-modal" className="btn btn-xs btn-error">Delete</label>
                  

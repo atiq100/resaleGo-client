@@ -103,12 +103,7 @@ fetch('http://localhost:5000/bookings',{
         <div className="card-body">
           <h2 className="card-title">Brand: {productName}</h2>
           <div className="text-lg font-semibold">
-          <p className="flex">
-              Id type:{" "}
-              <span className="text-blue-500 text-md font-normal mt-2 ml-1">
-                {data.map(user=><span key={user._id}>{user?.email === email && user?.isVarified=== 'varified' ? <FaCheckCircle></FaCheckCircle> : ''}</span>)}
-              </span>
-            </p>
+          
             <p>
               Original Price:{" "}
               <span className="text-secondary text-md font-normal">
@@ -145,10 +140,13 @@ fetch('http://localhost:5000/bookings',{
                 {location}
               </span>
             </p>
-            <p>
+            <p className="flex">
               Seller Name:{" "}
-              <span className="text-secondary text-md font-normal">
+              <span className="text-secondary text-md font-normal flex">
                 {seller_name}
+                <span className="text-blue-500 text-md font-normal mt-2 ml-1">
+                {data.map(user=><span key={user._id}>{user?.email === email && user?.isVarified=== 'varified' ? <FaCheckCircle></FaCheckCircle> : ''}</span>)}
+              </span>
               </span>
             </p>
             <p>

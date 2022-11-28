@@ -5,7 +5,7 @@ const useAdvertise = id =>{
     const [isAdvertiseLoading,setIsAdvertiseLoading] = useState(true)
     useEffect(()=>{
         if(id){
-            fetch(`http://localhost:5000/all-bikes/${id}`)
+            fetch(`http://localhost:5000/all-bikes/advertise/${id}`)
             .then(res=>res.json())
             .then(data=>{
                 console.log(data);
