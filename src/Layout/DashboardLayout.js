@@ -27,10 +27,10 @@ const DashboardLayout = () => {
               <Link to='/dashboard'><FaPalette></FaPalette>  Dashboard</Link>
             </li>
             <li>
-              {
-                isBuyer &&
+            
+                
                 <Link to='/dashboard/manageorders'><FaBorderAll></FaBorderAll>  My Order</Link>
-              }
+             
             </li>
             <li>
               {

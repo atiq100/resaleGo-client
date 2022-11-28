@@ -1,4 +1,5 @@
 import React from 'react';
+import AdvertiseItem from '../AdvertiseItem/AdvertiseItem';
 import BrandName from '../BrandName/BrandName'
 
 import { Header } from '../Header/Header';
@@ -10,6 +11,7 @@ const Home = () => {
             <Header></Header>
             <BrandName></BrandName>
             <Slider></Slider>
+            <AdvertiseItem></AdvertiseItem>
             
         </div>
     );

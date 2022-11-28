@@ -46,7 +46,8 @@ const product={
     yearsOfUse,
     condition,
     category,
-    photoURL
+    photoURL,
+    advertise:'not advertisement'
 }
 
 fetch('http://localhost:5000/all-bikes',{

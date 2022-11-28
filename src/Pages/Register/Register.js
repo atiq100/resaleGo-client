@@ -51,10 +51,13 @@ const Register = () => {
       });
   };
   const handleGoogleSignIn=()=>{
+
     providerLogin(googleProvider)
     .then(result =>{
         const user = result.user
-       
+       // const type = {userType:'Buyer'}
+        
+       // saveUser()
        navigate(from,{replace: true})
         
        

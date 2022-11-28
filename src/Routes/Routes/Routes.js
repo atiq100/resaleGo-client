@@ -11,6 +11,7 @@ import Home from "../../Pages/Home/Home/Home";
 import Login from "../../Pages/Login/Login";
 import Register from "../../Pages/Register/Register";
 import Sell from "../../Pages/Sell/Sell"
+import ErrorPage from "../../Pages/Shared/ErrorPage/ErrorPage";
 import AdminRoute from "../AdminRoute/AdminRoute";
 import BuyerRoute from "../BuyerRoute/BuyerRoute";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
@@ -20,6 +21,7 @@ export const router = createBrowserRouter([
     {
         path:'/',
         element:<Main></Main>,
+        errorElement:<ErrorPage></ErrorPage>,
         children:[
             {
                 path:'/',
@@ -50,6 +52,7 @@ export const router = createBrowserRouter([
     {
         path:'/dashboard',
         element:<PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
+        errorElement:<ErrorPage></ErrorPage>,
         children:[
             {
                 path:'/dashboard',
@@ -57,7 +60,7 @@ export const router = createBrowserRouter([
             },
             {
                 path:'/dashboard/manageorders',
-                element:<BuyerRoute><ManageOrders></ManageOrders></BuyerRoute>
+                element:<ManageOrders></ManageOrders>
             },
             {
                 path:'/dashboard/users',
