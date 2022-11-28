@@ -6,6 +6,7 @@ import AddSalePost from "../../Pages/Dashboard/AddSalePost/AddSalePost";
 import AllUsers from "../../Pages/Dashboard/AllUsers/AllUsers";
 import Dashboard from "../../Pages/Dashboard/Dashboard/Dashboard";
 import ManageOrders from "../../Pages/Dashboard/ManageOrders/ManageOrders";
+import ManageProducts from "../../Pages/Dashboard/ManageProducts/ManageProducts";
 import BrandName from "../../Pages/Home/BrandName/BrandName";
 import Home from "../../Pages/Home/Home/Home";
 import Login from "../../Pages/Login/Login";
@@ -61,6 +62,10 @@ export const router = createBrowserRouter([
             {
                 path:'/dashboard/manageorders',
                 element:<ManageOrders></ManageOrders>
+            },
+            {
+                path:'/dashboard/manageproducts',
+                element:<SellerRoute><ManageProducts></ManageProducts></SellerRoute>
             },
             {
                 path:'/dashboard/users',
