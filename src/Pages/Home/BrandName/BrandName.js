@@ -6,7 +6,7 @@ const BrandName = () => {
     
 
     useEffect( () =>{
-        fetch('http://localhost:5000/bike-categories')
+        fetch('https://b612-used-products-resale-server-side-atiq100.vercel.app/bike-categories')
         .then( res => res.json())
         .then(data => setCategories(data));
     }, [])

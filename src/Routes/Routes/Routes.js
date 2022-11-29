@@ -45,7 +45,7 @@ export const router = createBrowserRouter([
             {
                 path:'/all-bikes/:id',
                 element:<PrivateRoute><Sell></Sell></PrivateRoute>,
-                loader:({params})=>fetch(`http://localhost:5000/all-bikes/${params.id}`)
+                loader:({params})=>fetch(`https://b612-used-products-resale-server-side-atiq100.vercel.app/all-bikes/${params.id}`)
             },
            
             
@@ -84,7 +84,7 @@ export const router = createBrowserRouter([
             {
                 path:'/dashboard/addproduct',
                 element:<SellerRoute><AddSalePost></AddSalePost></SellerRoute>,
-                loader:()=>fetch('http://localhost:5000/bike-categories')
+                loader:()=>fetch('https://b612-used-products-resale-server-side-atiq100.vercel.app/bike-categories')
             }
 
         ]

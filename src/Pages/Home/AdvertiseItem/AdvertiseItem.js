@@ -8,7 +8,7 @@ const AdvertiseItem = () => {
    
     const [posts, setPosts] = useState([]);
   useEffect(() => {
-    fetch('http://localhost:5000/all-bikes',{
+    fetch('https://b612-used-products-resale-server-side-atiq100.vercel.app/all-bikes',{
       headers: {
         "content-type": "application/json",
         

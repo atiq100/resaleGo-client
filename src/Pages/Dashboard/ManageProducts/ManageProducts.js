@@ -11,7 +11,7 @@ const ManageProducts = () => {
     const {user} = useContext(AuthContext)
     const [deletingOrder,setDeletingOrder] = useState(null)
     const handleDelete =(item)=>{
-        fetch(`http://localhost:5000/all-bikes/${item._id}`,{
+        fetch(`https://b612-used-products-resale-server-side-atiq100.vercel.app/all-bikes/${item._id}`,{
             method:'DELETE',
             // headers:{
             //     authorization: `bearer ${localStorage.getItem('accessToken')}`
@@ -34,7 +34,7 @@ const ManageProducts = () => {
     queryKey: ["items",user?.email],
     queryFn: async () => {
       try {
-        const res = await fetch(`http://localhost:5000/all-bikes/manage?email=${user?.email}`, {
+        const res = await fetch(`https://b612-used-products-resale-server-side-atiq100.vercel.app/all-bikes/manage?email=${user?.email}`, {
         //   headers: {
         //     authorization: `bearer ${localStorage.getItem("accessToken")}`,
         //   },
@@ -48,7 +48,7 @@ const ManageProducts = () => {
     return <Loader></Loader>
   }
   const handleAdvertisement = id =>{
-    fetch(`http://localhost:5000/all-bikes/advertise/${id}`,{
+    fetch(`https://b612-used-products-resale-server-side-atiq100.vercel.app/all-bikes/advertise/${id}`,{
         method:'PUT',
         // headers:{
         //     authorization:`bearer ${localStorage.getItem('accessToken')}`

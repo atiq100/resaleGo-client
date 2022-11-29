@@ -68,3 +68,38 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+## Project Name
+# ResaleGo
+## Description
+This website provides facility to buy and sell used product.
+## Funtionality
+- use firebase authentication (Google,Github,Email/Password)
+- user can see the advertise item when seller marked for advertise
+- user can can book the item via payment process
+- For payment use stripe payment
+- without login user can not access categories item.
+- user can delete his booked item
+- seller can add product and manage product
+- Admin can verify the seller
+- use jWT web token
+
+## Implementation Technology
+- HTML
+- Tailwind CSS
+- Javascript
+- React
+- for server site use node, express
+## Third Party Library
+- daisy ui
+- kitwind,mambaui
+- React Hot Toast
+- React Icon
+- react query,axios
+## Tools
+- Vs Code
+- firebase
+- vercel
+Live website [deployment](https://resalego-a01a7.web.app/)
+admin email: (atiq@gmail.com)
+password: 123456

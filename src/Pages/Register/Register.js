@@ -67,7 +67,7 @@ const Register = () => {
 }
   const saveUser=(name,email,userType,isVarified)=>{
     const user = {name,email,userType,isVarified:'Not verify'}
-    fetch('http://localhost:5000/users',{
+    fetch('https://b612-used-products-resale-server-side-atiq100.vercel.app/users',{
       method:'POST',
       headers:{
         'content-type':'application/json'

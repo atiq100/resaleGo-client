@@ -9,7 +9,7 @@ const AllBuyers = () => {
 
     const [deletingUser,setDeletingUser] = useState(null)
     const handleDelete =(user)=>{
-        fetch(`http://localhost:5000/users/${user._id}`,{
+        fetch(`https://b612-used-products-resale-server-side-atiq100.vercel.app/users/${user._id}`,{
             method:'DELETE',
             // headers:{
             //     authorization: `bearer ${localStorage.getItem('accessToken')}`
@@ -32,14 +32,14 @@ const AllBuyers = () => {
     const {data:users=[],refetch} = useQuery({
         queryKey:['users'],
         queryFn:async()=>{
-            const res = await fetch(`http://localhost:5000/users/buyer?userType=Buyer`)
+            const res = await fetch(`https://b612-used-products-resale-server-side-atiq100.vercel.app/users/buyer?userType=Buyer`)
             const data= await res.json();
             return data;
         }
     })
 
     const handleMakeAdmin = id =>{
-        fetch(`http://localhost:5000/users/admin/${id}`,{
+        fetch(`https://b612-used-products-resale-server-side-atiq100.vercel.app/users/admin/${id}`,{
             method:'PUT',
             // headers:{
             //     authorization:`bearer ${localStorage.getItem('accessToken')}`
@@ -56,7 +56,7 @@ const AllBuyers = () => {
         })
     }
     // const handleMakeVerify = id =>{
-    //     fetch(`http://localhost:5000/users/verify/${id}`,{
+    //     fetch(`https://b612-used-products-resale-server-side-atiq100.vercel.app/users/verify/${id}`,{
     //         method:'PUT',
     //         // headers:{
     //         //     authorization:`bearer ${localStorage.getItem('accessToken')}`

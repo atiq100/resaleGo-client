@@ -51,11 +51,11 @@ const product={
     advertise:'not advertisement'
 }
 
-fetch('http://localhost:5000/all-bikes',{
+fetch('https://b612-used-products-resale-server-side-atiq100.vercel.app/all-bikes',{
     method:'POST',
     headers:{
         'content-type': 'application/json',
-       // authorization: `Bearer ${localStorage.getItem('doctor-token')}`
+       // authorization: `Bearer ${localStorage.getItem('resalego-token')}`
         
         
     },

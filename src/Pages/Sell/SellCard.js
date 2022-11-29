@@ -12,7 +12,7 @@ const SellCard = ({ post }) => {
   const {user}=useContext(AuthContext)
   const [data,setStatus] = useState([])
   
-  const url = 'http://localhost:5000/users'
+  const url = 'https://b612-used-products-resale-server-side-atiq100.vercel.app/users'
  useEffect(()=>{
   const getUsers =async ()=>
    await 
@@ -65,7 +65,7 @@ const booking={
 
 
 
-fetch('http://localhost:5000/bookings',{
+fetch('https://b612-used-products-resale-server-side-atiq100.vercel.app/bookings',{
   method:'POST',
   headers:{
     'content-type':'application/json'
