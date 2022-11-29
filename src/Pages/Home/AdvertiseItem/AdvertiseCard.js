@@ -64,7 +64,8 @@ const booking={
   phone,
   product,
   price,
-  location
+  location,
+  photoURL
 }
 
 

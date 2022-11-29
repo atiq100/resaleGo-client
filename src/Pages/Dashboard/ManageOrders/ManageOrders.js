@@ -58,6 +58,7 @@ const ManageOrders = () => {
             <>
                   <tr>
               <th></th>
+              <th>Image</th>
               <th>Name</th>
               <th>Email</th>
               <th>Product Name</th>
@@ -74,6 +75,11 @@ const ManageOrders = () => {
             {bookings && bookings.map((booking, i) => (
               <tr key={booking._id}>
                 <th>{i + 1}</th>
+                <th><div className="avatar">
+  <div className="w-16 rounded">
+    <img src={booking.photoURL} alt=''/>
+  </div>
+</div></th>
                 <td>{booking.Buyer}</td>
                 <td>{booking.email}</td>
                 <td>{booking.product}</td>
