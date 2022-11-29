@@ -1,13 +1,14 @@
 import React, { useContext, useState } from "react";
 import toast from "react-hot-toast";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../context/AuthProvider/AuthProvider";
 
 const AddSalePost = () => {
     const {user} = useContext(AuthContext)
     const [catId,setCatId]=useState('')
   const categories = useLoaderData();
-  console.log(categories);
+ 
+  const navigate = useNavigate()
 
   const onChangeHandler = (e) => {
     const index = e.target.selectedIndex;
@@ -66,6 +67,7 @@ fetch('http://localhost:5000/all-bikes',{
     if(data.acknowledged){
         toast('Product added successfully')
         form.reset();
+        navigate('/dashboard/manageproducts')
     }
 })
 .catch(err=>console.log(err))
