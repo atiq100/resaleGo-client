@@ -100,6 +100,7 @@ This website provides facility to buy and sell used product.
 - Vs Code
 - firebase
 - vercel
-Live website [deployment](https://resalego-a01a7.web.app/)
+#For Access website
+Live website (https://resalego-a01a7.web.app/)
 admin email: (atiq@gmail.com)
 password: 123456
