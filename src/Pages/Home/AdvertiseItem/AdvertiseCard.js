@@ -105,72 +105,92 @@ fetch('https://b612-used-products-resale-server-side-atiq100.vercel.app/bookings
     
         {isAdvertise &&
         
-      <div className="card w-full lg:w-96 bg-base-100 shadow-xl">
-        
-        <figure>
-          <img src={photoURL} alt="bike" />
-        </figure>
-        <div className="card-body">
-          <h2 className="card-title">Brand: {productName}</h2>
-          <div className="text-lg font-semibold">
-         
-            <p>
-              Original Price:{" "}
-              <span className="text-secondary text-md font-normal">
-                {originalPrice}
+      <div className="card w-full lg:w-96 bg-base-100 shadow-xl mb-4" data-aos="fade-down"
+     data-aos-easing="linear"
+     data-aos-duration="1500">
+        <div className="flex justify-between items-center p-8">
+       <div>
+       <h2 className="text-3xl font-bold "> {productName}
+        </h2>
+        <p className="text-gray-400 text-lg font-semibold">
+              Resale Price {" "}
+              <span className="text-red-600 text-2xl font-bold">
+                ${resalePrice}
               </span>
             </p>
-            <p>
-              Resale Price:{" "}
-              <span className="text-secondary text-md font-normal">
-                {resalePrice}
-              </span>
-            </p>
-            <p>
-              Condition:{" "}
-              <span className="text-secondary text-md font-normal">
-                {condition}
-              </span>
-            </p>
-            <p>
-              Years Of Use:{" "}
-              <span className="text-secondary text-md font-normal">
-                {yearsOfUse}
-              </span>
-            </p>
-            <p>
-              Description:{" "}
-              <span className="text-secondary text-md font-normal">
-                {description}
-              </span>
-            </p>
-            <p>
-              Location:{" "}
-              <span className="text-secondary text-md font-normal">
-                {location}
-              </span>
-            </p>
-            <p className="flex">
-              Seller Name:{" "}
-              <span className="text-secondary text-md font-normal flex">
-                {seller_name}
+       </div>
+        <div>
+        <p className="flex text-xl font-semibold">
+              Seller:{" "}
+               <span className="text-gray-400 text-lg font-normal flex ml-1">
+                  {seller_name}
                 <span className="text-blue-500 text-md font-normal mt-2 ml-1">
                 {data.map(user=><span key={user._id}>{user?.email === email && user?.isVarified=== 'varified' ? <FaCheckCircle></FaCheckCircle> : ''}</span>)}
               </span>
               </span>
             </p>
+            
+        </div>
+        </div>
+        <div>
+          
+        </div>
+        <figure>
+          <img src={photoURL} alt="bike" />
+        </figure>
+        <div className="card-body">
+          
+          <div className="text-lg font-semibold">
+         
+           <div className="flex justify-center items-center text-center gap-3 ">
+           <p className="">
+              Original Price{" "}
+              <span className="text-gray-400 text-md font-normal">
+                ${originalPrice}
+              </span>
+            </p>
+            
             <p>
-              Phone Number:{" "}
-              <span className="text-secondary text-md font-normal">
+              Condition{" "}
+              <span className="text-gray-400 text-md font-normal">
+                {condition}
+              </span>
+            </p>
+            <p>
+               Use{" "}
+              <span className="text-gray-400 text-md font-normal">
+                {yearsOfUse}
+              </span>
+            </p>
+           </div>
+           <div class="divider"></div> 
+            <div className="grid grid-cols-2 justify-between items-center text-center gap-4">
+            <h4>
+              Description{" "}
+              <p className="text-gray-400 text-md font-normal">
+                {description}
+              </p>
+            </h4>
+            <h4>
+              Location{" "}
+              <p className="text-gray-400 text-md font-normal">
+                {location}
+              </p>
+            </h4>
+          
+            <h4>
+              Phone Number{" "}
+              <p className="text-gray-400 text-md font-normal">
                 {number}
-              </span>
-            </p>
-            <p>
-              Posted Date:{" "}
-              <span className="text-secondary text-md font-normal">
+              </p>
+            </h4>
+            <h4>
+              Posted Date{" "}
+              <p className="text-gray-400 text-md font-normal">
                 {lastModified.slice(0, 15)}
-              </span>
-            </p>
+              </p>
+            </h4>
+            </div>
           </div>
           <div className="card-actions justify-end">
           <label htmlFor="booking-modal" className="btn btn-primary">Buy Now</label>

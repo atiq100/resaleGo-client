@@ -95,7 +95,17 @@ const ManageOrders = () => {
                   <td>{booking.product}</td>
                   <td>{booking.phone}</td>
                   <td>
-                    <Link className="btn btn-secondary btn-xs">Pay</Link>
+                  {
+                booking.price && !booking.paid && <Link 
+                to={`/dashboard/payment/${booking._id}`}>
+                <button 
+                
+                className='btn btn-primary btn-sm'>Pay</button>
+                </Link>
+              }
+              {
+                booking.price && booking.paid && <span className='text-green-500'>Paid</span>
+              }
                   </td>
                   <td>
                     <label

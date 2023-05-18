@@ -9,6 +9,7 @@ import AllUsers from "../../Pages/Dashboard/AllUsers/AllUsers";
 import Dashboard from "../../Pages/Dashboard/Dashboard/Dashboard";
 import ManageOrders from "../../Pages/Dashboard/ManageOrders/ManageOrders";
 import ManageProducts from "../../Pages/Dashboard/ManageProducts/ManageProducts";
+import Payment from "../../Pages/Dashboard/Payment/Payment";
 import BrandName from "../../Pages/Home/BrandName/BrandName";
 import Home from "../../Pages/Home/Home/Home";
 import Login from "../../Pages/Login/Login";
@@ -85,7 +86,12 @@ export const router = createBrowserRouter([
                 path:'/dashboard/addproduct',
                 element:<SellerRoute><AddSalePost></AddSalePost></SellerRoute>,
                 loader:()=>fetch('https://b612-used-products-resale-server-side-atiq100.vercel.app/bike-categories')
-            }
+            },
+            {
+                path:'/dashboard/payment/:id',
+                element:<Payment></Payment>,
+                loader: ({params})=> fetch(`http://localhost:5000/bookings/${params.id}`)
+            },
 
         ]
     }

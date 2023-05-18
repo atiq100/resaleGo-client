@@ -9,7 +9,7 @@ const Sell = () => {
     const {category_id}= categories
     const [posts, setPosts] = useState([]);
   useEffect(() => {
-    fetch(`http://localhost:5000/all-bikes/${category_id}`,{
+    fetch(`https://b612-used-products-resale-server-side-atiq100.vercel.app/all-bikes/${category_id}`,{
       headers: {
         "content-type": "application/json",
         
